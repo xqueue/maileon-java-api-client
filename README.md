@@ -1,3 +1,3 @@
-# java-api-client-revised
+Java API Client for Maileon.
 
-Revised version of java api client.
+The documentation can be found under https://dev.maileon.com/ 
