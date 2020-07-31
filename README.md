@@ -1,1 +1,3 @@
-# maileon-java-api-client
+# java-api-client-revised
+
+Revised version of java api client.
