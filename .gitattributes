@@ -1,0 +1,17 @@
+* text=auto	eol=lf
+*.xml	eol=lf
+*.html	eol=lf
+*.java	eol=lf
+*.es6	eol=lf
+*.jsp	eol=lf
+*.js	eol=lf
+*.jsx	eol=lf
+*.css	eol=lf
+*.ftl	eol=lf
+*.pdf	-text
+*.jpg	-text
+*.jpeg	-text
+*.png	-text
+*.zip	-text
+*.docx	-text
+*.doc	-text

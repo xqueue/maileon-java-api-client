@@ -1,0 +1,23 @@
+# IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+Servers/
+
+#VSCode
+.vscode
+
+#Netbeans
+nbproject/
+nbactions.xml
+nb-configuration.xml
+
+# Maven
+target/
