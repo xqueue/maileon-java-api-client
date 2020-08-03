@@ -235,7 +235,6 @@ public class MaileonContactsService extends AbstractMaileonService {
      * @return a page containing the returned {@link Contact} objects.
      * @throws MaileonException the maileon exception
      */
-    @SuppressWarnings("unchecked")
     public Page<Contact> getContacts(List<StandardContactField> standardFields, List<String> customFields, int pageIndex, int pageSize) throws MaileonException {
         return getContacts(standardFields, customFields, pageIndex, pageSize, null);
     }
