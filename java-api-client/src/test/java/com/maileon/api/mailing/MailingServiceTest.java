@@ -25,7 +25,7 @@ public class MailingServiceTest {
 
     @BeforeAll
     public static void beforeAll() {
-        MaileonConfiguration configuration = new MaileonConfiguration("https://api-test.maileon.com/1.0", "secret");
+        MaileonConfiguration configuration = new MaileonConfiguration("https://api.maileon.com/1.0", "secret");
 
         mailingService = new MaileonMailingsService(configuration);
         mailingService.setDebug(false);
