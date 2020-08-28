@@ -53,7 +53,7 @@ public class MailingXmlSerializer implements MessageBodyReader<Mailing>, Message
     @Override
     public void writeTo(Mailing t, Class<?> type, Type type1, Annotation[] antns, MediaType mt, MultivaluedMap<String, Object> mm, OutputStream out) throws IOException, WebApplicationException {
         if (t == null) {
-            throw new WebApplicationException(new Exception("Unable to read passed mailing while serializing (mailing is null)"));
+            throw new WebApplicationException("Unable to read passed mailing while serializing (mailing is null)");
         }
 
         Element root;

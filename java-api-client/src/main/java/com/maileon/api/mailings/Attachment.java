@@ -14,10 +14,6 @@ public class Attachment implements Serializable {
 
     private String diagnosis;
 
-    private long created;
-
-    private long updated;
-
     public long getId() {
         return id;
     }
@@ -58,28 +54,10 @@ public class Attachment implements Serializable {
         this.diagnosis = diagnosis;
     }
 
-    public long getCreated() {
-        return created;
-    }
-
-    public void setCreated(long created) {
-        this.created = created;
-    }
-
-    public long getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(long updated) {
-        this.updated = updated;
-    }
-
     @Override
     public String toString() {
-        return String
-                .format("Attachment [id=%s, filename=%s, mimeType=%s, sizeKB=%s, diagnosis=%s, created=%s, updated=%s]",
-                        id, filename, mimeType, sizeKB, diagnosis, created,
-                        updated);
+        return String.format("Attachment [id=%s, filename=%s, mimeType=%s, sizeKB=%s, diagnosis=%s]",
+                id, filename, mimeType, sizeKB, diagnosis);
     }
 
 }
