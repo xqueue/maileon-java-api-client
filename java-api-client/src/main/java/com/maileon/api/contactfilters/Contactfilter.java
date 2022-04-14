@@ -1,12 +1,7 @@
 package com.maileon.api.contactfilters;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * This class represents the values of a contact filter
- *
  */
 
 public class Contactfilter {
@@ -20,12 +15,10 @@ public class Contactfilter {
     protected String status;
     protected long updated;
 
-    protected List<Rule> rules = new ArrayList<>();
-
     public Contactfilter() {}
 
     public Contactfilter(long id, String name, String created, String author,
-            int countContacts, int countRules, String status, long updated, List<Rule> rules) {
+            int countContacts, int countRules, String status, long updated) {
         super();
         this.id = id;
         this.name = name;
@@ -35,8 +28,6 @@ public class Contactfilter {
         this.countRules = countRules;
         this.status = status;
         this.updated = updated;
-
-                if(rules != null) { this.rules = rules; }
     }
 
     /**
@@ -66,6 +57,7 @@ public class Contactfilter {
     /**
      * Gets the value of the countContacts property.
      *
+     * @return 
      */
     public int getCountContacts() {
         return countContacts;
@@ -74,6 +66,7 @@ public class Contactfilter {
     /**
      * Sets the value of the countContacts property.
      *
+     * @param value
      */
     public void setCountContacts(int value) {
         this.countContacts = value;
@@ -82,6 +75,7 @@ public class Contactfilter {
     /**
      * Gets the value of the countRules property.
      *
+     * @return 
      */
     public int getCountRules() {
         return countRules;
@@ -90,24 +84,25 @@ public class Contactfilter {
     /**
      * Sets the value of the countRules property.
      *
+     * @param value
      */
     public void setCountRules(int value) {
         this.countRules = value;
     }
 
     /**
-     * Gets the value of the created property.
-     * yyyy-MM-dd HH:mm:ss
+     * Gets the value of the created property.yyyy-MM-dd HH:mm:ss
      *
+     * @return 
      */
     public String getCreated() {
         return created;
     }
 
     /**
-     * Sets the value of the created property.
-     * yyyy-MM-dd HH:mm:ss
+     * Sets the value of the created property.yyyy-MM-dd HH:mm:ss
      *
+     * @param value
      */
     public void setCreated(String value) {
         this.created = value;
@@ -116,6 +111,7 @@ public class Contactfilter {
     /**
      * Gets the value of the id property.
      *
+     * @return 
      */
     public long getId() {
         return id;
@@ -124,6 +120,7 @@ public class Contactfilter {
     /**
      * Sets the value of the id property.
      *
+     * @param value
      */
     public void setId(long value) {
         this.id = value;
@@ -193,46 +190,13 @@ public class Contactfilter {
         this.updated = value;
     }
 
-    /**
-     * Adds a single rule to this contact filter
-     *
-     * @param rule the rule to add
-     */
-    public void addRule(Rule rule) {
-        this.rules.add(rule);
-    }
-
-    /**
-     * Deletes every rule
-     */
-    public void clearRules() {
-        this.rules.clear();
-    }
-
-    /**
-     * Returns the current list of rules
-     *
-     * @return
-     */
-    public List<Rule> getRules() {
-        return this.rules;
-    }
 
     @Override
     public String toString() {
-        StringBuilder rules = new StringBuilder();
-
-        for(Rule rule : this.rules) {
-            rules.append(rule.toString());
-            rules.append(',');
-        }
-
-        if(rules.length() > 0) { rules.deleteCharAt(rules.length() - 1); }
-
         return "ContactFilter [author=" + author + ", countContacts="
                         + countContacts + ", countRules=" + countRules + ", created="
                         + created + ", id=" + id + ", name=" + name + ", status="
-                        + status + ", updated=" + updated + ", rules={" + rules.toString() + "}]";
+                        + status + ", updated=" + updated + "]";
     }
 
 }

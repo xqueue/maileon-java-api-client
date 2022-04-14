@@ -15,10 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-/**
- *
- * @author ischuraev
- */
 public class MailingServiceTest {
 
     private static MaileonMailingsService mailingService;
