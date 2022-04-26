@@ -108,9 +108,11 @@ public class MaileonTransactionsService extends AbstractMaileonService {
         JSONObject transactionType = new JSONObject();
         transactionType.put("name", type.getName());
         transactionType.put("storeOnly", type.isStoreOnly());
-        transactionType.put("archivingDuration", type.getArchivingDuration());
+        if (type.getArchivingDuration() != null) {
+            transactionType.put("archivingDuration", type.getArchivingDuration());
+        }
         transactionType.put("content", parsedExample);
-        ResponseWrapper response = post("transactions/types", null, MediaType.APPLICATION_JSON_TYPE, transactionType.toJSONString());
+        ResponseWrapper response = post("transactions/types", null, MediaType.APPLICATION_JSON_TYPE, MAILEON_XML_TYPE, transactionType.toJSONString());
         return Long.parseLong(response.getEntityAsXml().getText());
 
     }

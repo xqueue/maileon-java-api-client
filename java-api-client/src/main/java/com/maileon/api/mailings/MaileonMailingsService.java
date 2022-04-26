@@ -1259,7 +1259,7 @@ public class MaileonMailingsService extends AbstractMaileonService {
         params.add("scheduleTime", scheduleTime);
         params.add("beforeSchedulingTime", beforeSchedulingTime);
 //        params.add("order", "DESC");
-        params.add(generateParameters("fields", fields));
+        params.addList("fields", fields);
 
         ResponseWrapper response = get("mailings/filter/scheduletime", params);
         Page<Mailing> page = PageUtils.createPage(pageIndex, pageSize, response);
@@ -1297,8 +1297,8 @@ public class MaileonMailingsService extends AbstractMaileonService {
         }
         QueryParameters params = new QueryParameters("page_index", pageIndex);
         params.add("page_size", pageSize);
-        params.add(generateParameters("fields", fields));
-        params.add(generateParameters("types", types));
+        params.addList("fields", fields);
+        params.addList("types", types);
 
         ResponseWrapper response = get("mailings/filter/types", params);
         Page<Mailing> page = PageUtils.createPage(pageIndex, pageSize, response);
@@ -1337,8 +1337,8 @@ public class MaileonMailingsService extends AbstractMaileonService {
         }
         QueryParameters params = new QueryParameters("page_index", pageIndex);
         params.add("page_size", pageSize);
-        params.add(generateParameters("fields", fields));
-        params.add(generateParameters("states", states));
+        params.addList("fields", fields);
+        params.addList("states", states);
 
         ResponseWrapper response = get("mailings/filter/states", params);
         Page<Mailing> page = PageUtils.createPage(pageIndex, pageSize, response);
@@ -1374,8 +1374,8 @@ public class MaileonMailingsService extends AbstractMaileonService {
         }
         QueryParameters params = new QueryParameters("page_index", pageIndex);
         params.add("page_size", pageSize);
-        params.add(generateParameters("fields", fields));
-        params.add(generateParameters("keywords", keywords));
+        params.addList("fields", fields);
+        params.addList("keywords", keywords);
         params.add("keywordsOp", keywordsOp);
 
         ResponseWrapper response = get("mailings/filter/keywords", params);
@@ -1413,7 +1413,7 @@ public class MaileonMailingsService extends AbstractMaileonService {
         }
         QueryParameters params = new QueryParameters("page_index", pageIndex);
         params.add("page_size", pageSize);
-        params.add(generateParameters("fields", fields));
+        params.addList("fields", fields);
         params.add("creatorName", creatorName);
         params.add("creatorNameOp", creatorNameOp);
 
@@ -1451,7 +1451,7 @@ public class MaileonMailingsService extends AbstractMaileonService {
         }
         QueryParameters params = new QueryParameters("page_index", pageIndex);
         params.add("page_size", pageSize);
-        params.add(generateParameters("fields", fields));
+        params.addList("fields", fields);
         params.add("subject", subject);
         params.add("subjectOp", subjectOp);
 
@@ -1642,23 +1642,4 @@ public class MaileonMailingsService extends AbstractMaileonService {
         QueryParameters parameters = new QueryParameters("name", name);
         delete("mailings/" + mailingId + "/settings/properties", parameters, null);
     }
-
-    /**
-     * Field parameters.
-     *
-     * @param values the fields
-     * @return the query parameters
-     */
-    private QueryParameters generateParameters(String name, List<String> values) {
-        QueryParameters parameters = new QueryParameters();
-        if (values != null) {
-            for (String value : values) {
-                if (value != null) {
-                    parameters.add(name, value);
-                }
-            }
-        }
-        return parameters;
-    }
-
 }

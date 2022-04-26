@@ -27,6 +27,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -201,7 +202,32 @@ public abstract class AbstractMaileonService {
         if (entity == null) {
             entity = "";
         }
-        Response cr = getBuilder(path, parameters).header("Accept", mediaType.toString()).post(Entity.entity(entity, mediaType));
+        Response cr = getBuilder(path, parameters).accept(mediaType).post(Entity.entity(entity, mediaType));
+
+        ResponseWrapper resp = new ResponseWrapper(cr);
+        analyzeStatusCode(resp);
+        return resp;
+    }
+
+    /**
+     * Represents a POST request with parameters and media type.
+     *
+     * @param path The path to the corresponding resources
+     * @param parameters The parameters of the POST request
+     * @param requestMediaType media type of request
+     * @param responseMediaType media type of response
+     * @param entity The entity to post as an object type
+     * @return The response as a {@link ResponseWrapper}
+     * @throws MaileonException the Maileon exception
+     */
+    protected ResponseWrapper post(String path, QueryParameters parameters, MediaType requestMediaType, MediaType responseMediaType, Object entity)
+            throws MaileonException {
+
+        // Entity must not be null
+        if (entity == null) {
+            entity = "";
+        }
+        Response cr = getBuilder(path, parameters).accept(responseMediaType).post(Entity.entity(entity, requestMediaType));
 
         ResponseWrapper resp = new ResponseWrapper(cr);
         analyzeStatusCode(resp);
@@ -315,7 +341,7 @@ public abstract class AbstractMaileonService {
         wt = wt.path(path);
 
         if (parameters != null) {
-            for (int i = 0; i < parameters.size(); i++) {
+            for (int i = 0 ; i < parameters.size() ; i++) {
                 wt = wt.queryParam(parameters.getName(i), parameters.getValue(i));
             }
         }
@@ -431,9 +457,11 @@ public abstract class AbstractMaileonService {
          * @param values the values to add
          * @return the query parameters
          */
-        public QueryParameters addList(String name, List<Object> values) {
-            for (Object value : values) {
-                add(name, value);
+        public QueryParameters addList(String name, Collection<? extends Object> values) {
+            if (values != null) {
+                for (Object value : values) {
+                    add(name, value);
+                }
             }
             return this;
         }
