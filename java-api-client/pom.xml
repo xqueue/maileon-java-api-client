@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.maileon.apiclient</groupId>
     <artifactId>maileon-api-client</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Java API Client for Maileon API</name>
     <description>Client for Customer API of Maileon. The API Documentation is avalable under https://dev.maileon.com</description>
